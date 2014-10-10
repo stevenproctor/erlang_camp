@@ -8,4 +8,9 @@
 op(add, Addend, Augend) ->
     Addend + Augend;
 op(sub, Minuend, Subtrahend) ->
-    Minuend - Subtrahend.
+    subtract(Minuend, Subtrahend).
+
+subtract(Minuend, Subtrahend) when Minuend >= Subtrahend ->
+    Minuend - Subtrahend;
+subtract(_, _) ->
+    error.
