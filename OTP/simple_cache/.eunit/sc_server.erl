@@ -104,7 +104,7 @@ handle_call(stop, _From, State) ->
 %% @end
 %%--------------------------------------------------------------------
 handle_cast({insert, {Key, Value}}, State) ->
-    NewState = insert(Key, Value, State),
+    NewState = [{Key, Value}|State],
     {noreply, NewState}.
 
 %%--------------------------------------------------------------------
@@ -151,9 +151,6 @@ code_change(_OldVsn, State, _Extra) ->
 
 find_by_key(Key, State) ->
     proplists:get_value(Key, State).
-
-insert(Key, Value, State) ->
-    [{Key, Value}|State].
 
 
 %%%===================================================================
